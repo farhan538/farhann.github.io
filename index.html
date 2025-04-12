@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Farhan Boudiwale | Cyber Security Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#6366f1",
+              secondary: "#a855f7",
+            },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+
+      body {
+          font-family: 'Inter', sans-serif;
+      }
+
+      .typing-animation::after {
+          content: "|";
+          animation: blink 1s infinite;
+      }
+
+      @keyframes blink {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0; }
+      }
+
+      .particle-background {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          z-index: -1;
+      }
+
+      .particle {
+          position: absolute;
+          border-radius: 50%;
+          background: rgba(99, 102, 241, 0.2);
+          animation: float 8s infinite ease-in-out;
+      }
+
+      @keyframes float {
+          0%, 100% { transform: translateY(0) translateX(0); }
+          25% { transform: translateY(-20px) translateX(10px); }
+          50% { transform: translateY(0) translateX(20px); }
+          75% { transform: translateY(20px) translateX(10px); }
+      }
+
+      .glassmorphism {
+          background: rgba(255, 255, 255, 0.7);
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+      }
+
+      .skill-card:hover {
+          transform: translateY(-5px) scale(1.03);
+          box-shadow: 0 10px 25px rgba(99, 102, 241, 0.2);
+      }
+
+      .project-card:hover {
+          transform: translateY(-5px) scale(1.02);
+          box-shadow: 0 15px 30px rgba(99, 102, 241, 0.15);
+      }
+
+      .timeline-item::before {
+          content: "";
+          position: absolute;
+          left: -38px;
+          top: 0;
+          width: 16px;
+          height: 16px;
+          border-radius: 50%;
+          background-color: #6366f1;
+          border: 3px solid white;
+          z-index: 1;
+      }
+
+      .timeline-item::after {
+          content: "";
+          position: absolute;
+          left: -31px;
+          top: 16px;
+          width: 2px;
+          height: calc(100% + 40px);
+          background-color: #e5e7eb;
+          z-index: 0;
+      }
+
+      .timeline-item:last-child::after {
+          display: none;
+      }
+
+      .custom-checkbox {
+          appearance: none;
+          width: 20px;
+          height: 20px;
+          border: 2px solid #6366f1;
+          border-radius: 4px;
+          position: relative;
+          cursor: pointer;
+          outline: none;
+      }
+
+      .custom-checkbox:checked {
+          background-color: #6366f1;
+      }
+
+      .custom-checkbox:checked::after {
+          content: "✓";
+          position: absolute;
+          color: white;
+          font-size: 14px;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+      }
+
+      .toggle-switch {
+          position: relative;
+          display: inline-block;
+          width: 50px;
+          height: 24px;
+      }
+
+      .toggle-switch input {
+          opacity: 0;
+          width: 0;
+          height: 0;
+      }
+
+      .toggle-slider {
+          position: absolute;
+          cursor: pointer;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: #ccc;
+          transition: .4s;
+          border-radius: 24px;
+      }
+
+      .toggle-slider:before {
+          position: absolute;
+          content: "";
+          height: 18px;
+          width: 18px;
+          left: 3px;
+          bottom: 3px;
+          background-color: white;
+          transition: .4s;
+          border-radius: 50%;
+      }
+
+      input:checked + .toggle-slider {
+          background-color: #6366f1;
+      }
+
+      input:checked + .toggle-slider:before {
+          transform: translateX(26px);
+      }
+
+      .progress-bar {
+          height: 8px;
+          background-color: #e5e7eb;
+          border-radius: 4px;
+          overflow: hidden;
+      }
+
+      .progress-fill {
+          height: 100%;
+          background-color: #6366f1;
+          border-radius: 4px;
+          transition: width 1s ease-in-out;
+      }
+
+      .glow-button:hover {
+          box-shadow: 0 0 15px rgba(99, 102, 241, 0.5);
+      }
+
+      input:focus, textarea:focus {
+          outline: none;
+          border-color: #6366f1;
+          box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
+      <div
+        class="container mx-auto px-6 py-3 flex items-center justify-between"
+      >
+        <a href="#" class="text-2xl font-['Pacifico'] text-primary">Farhan</a>
+
+        <div class="hidden md:flex items-center space-x-8">
+          <a
+            href="#about"
+            class="text-gray-700 hover:text-primary transition-colors"
+            >About</a
+          >
+          <a
+            href="#skills"
+            class="text-gray-700 hover:text-primary transition-colors"
+            >Skills</a
+          >
+          <a
+            href="#projects"
+            class="text-gray-700 hover:text-primary transition-colors"
+            >Projects</a
+          >
+          <a
+            href="#experience"
+            class="text-gray-700 hover:text-primary transition-colors"
+            >Experience</a
+          >
+          <a
+            href="#certifications"
+            class="text-gray-700 hover:text-primary transition-colors"
+            >Certifications</a
+          >
+          <a
+            href="#contact"
+            class="text-gray-700 hover:text-primary transition-colors"
+            >Contact</a
+          >
+        </div>
+
+        <div class="flex items-center space-x-4">
+          <label class="toggle-switch">
+            <input type="checkbox" id="theme-toggle" />
+            <span class="toggle-slider"></span>
+          </label>
+
+          <button
+            class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700"
+            id="mobile-menu-button"
+          >
+            <i class="ri-menu-line ri-lg"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div class="md:hidden hidden bg-white" id="mobile-menu">
+        <div class="container mx-auto px-6 py-3 flex flex-col space-y-4">
+          <a
+            href="#about"
+            class="text-gray-700 hover:text-primary transition-colors"
+            >About</a
+          >
+          <a
+            href="#skills"
+            class="text-gray-700 hover:text-primary transition-colors"
+            >Skills</a
+          >
+          <a
+            href="#projects"
+            class="text-gray-700 hover:text-primary transition-colors"
+            >Projects</a
+          >
+          <a
+            href="#experience"
+            class="text-gray-700 hover:text-primary transition-colors"
+            >Experience</a
+          >
+          <a
+            href="#certifications"
+            class="text-gray-700 hover:text-primary transition-colors"
+            >Certifications</a
+          >
+          <a
+            href="#contact"
+            class="text-gray-700 hover:text-primary transition-colors"
+            >Contact</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      class="relative min-h-screen flex items-center pt-16"
+      style="background-image: linear-gradient(to right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7)), url('https://public.readdy.ai/ai/img_res/b2a073e2b8ef3597b4e57d9faf5c9ad5.jpg'); background-size: cover; background-position: center;"
+    >
+      <div class="particle-background">
+        <div
+          class="particle"
+          style="width: 50px; height: 50px; top: 10%; left: 10%; animation-delay: 0s;"
+        ></div>
+        <div
+          class="particle"
+          style="width: 30px; height: 30px; top: 20%; left: 20%; animation-delay: 1s;"
+        ></div>
+        <div
+          class="particle"
+          style="width: 40px; height: 40px; top: 30%; left: 70%; animation-delay: 2s;"
+        ></div>
+        <div
+          class="particle"
+          style="width: 25px; height: 25px; top: 70%; left: 30%; animation-delay: 3s;"
+        ></div>
+        <div
+          class="particle"
+          style="width: 35px; height: 35px; top: 60%; left: 80%; animation-delay: 4s;"
+        ></div>
+        <div
+          class="particle"
+          style="width: 45px; height: 45px; top: 80%; left: 15%; animation-delay: 5s;"
+        ></div>
+      </div>
+
+      <div class="container mx-auto px-6">
+        <div class="max-w-3xl">
+          <h1 class="text-4xl md:text-6xl font-bold mb-4 text-gray-800">
+            Hi, I'm <span class="text-primary">Farhan Boudiwale</span>
+          </h1>
+
+          <h2
+            class="text-2xl md:text-3xl font-semibold mb-6 text-gray-700 typing-animation"
+            id="typing-text"
+          >
+            BTech Cyber Security Student
+          </h2>
+
+          <p class="text-lg text-gray-600 mb-8 max-w-2xl">
+            Passionate about securing digital infrastructures and developing
+            innovative solutions to complex security challenges. Specializing in
+            IoT security, intrusion detection, and secure application
+            development.
+          </p>
+
+          <div class="flex flex-wrap gap-4">
+            <a
+              href="#contact"
+              class="px-8 py-3 bg-primary text-white font-medium !rounded-button transition-all hover:bg-primary/90 glow-button whitespace-nowrap"
+            >
+              Get in Touch
+            </a>
+
+            <a
+              href="#projects"
+              class="px-8 py-3 border-2 border-primary text-primary font-medium !rounded-button transition-all hover:bg-primary/5 whitespace-nowrap"
+            >
+              View Projects
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-16 text-gray-800">
+          About Me
+        </h2>
+
+        <div class="flex flex-col md:flex-row items-center gap-12">
+          <div class="md:w-1/3">
+            <div class="relative rounded-xl overflow-hidden shadow-xl">
+              <img
+                src="https://public.readdy.ai/ai/img_res/5942ce86011703d855be2f4c94097ad5.jpg"
+                alt="Farhan Boudiwale"
+                class="w-full h-auto object-cover"
+              />
+            </div>
+          </div>
+
+          <div class="md:w-2/3">
+            <div class="glassmorphism p-8 rounded-xl">
+              <h3 class="text-2xl font-semibold mb-4 text-gray-800">
+                Final Year BTech Student
+              </h3>
+
+              <p class="text-gray-600 mb-6">
+                I am a final-year BTech student specializing in Cyber Security
+                with a strong foundation in programming, network security, and
+                IoT development. My academic journey has been focused on
+                understanding and mitigating digital threats while creating
+                secure and efficient solutions.
+              </p>
+
+              <p class="text-gray-600 mb-8">
+                My technical expertise spans across Python, C, JavaScript, and
+                database technologies like SQL Server and MongoDB. I'm
+                particularly interested in the intersection of IoT and security,
+                where I've developed several projects including an IoT-based
+                home security system and an intrusion detection system.
+              </p>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-gray-50 p-6 rounded-lg text-center">
+                  <div
+                    class="text-3xl font-bold text-primary mb-2"
+                    id="cgpa-counter"
+                  >
+                    8.7
+                  </div>
+                  <div class="text-gray-600">CGPA</div>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-lg text-center">
+                  <div
+                    class="text-3xl font-bold text-primary mb-2"
+                    id="projects-counter"
+                  >
+                    7
+                  </div>
+                  <div class="text-gray-600">Projects</div>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-lg text-center">
+                  <div
+                    class="text-3xl font-bold text-primary mb-2"
+                    id="certs-counter"
+                  >
+                    5
+                  </div>
+                  <div class="text-gray-600">Certifications</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-50">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-16 text-gray-800">
+          Technical Skills
+        </h2>
+
+        <div class="mb-12">
+          <h3 class="text-xl font-semibold mb-8 text-gray-700">
+            Programming Languages
+          </h3>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div
+              class="skill-card bg-white p-6 rounded-xl shadow-sm transition-all duration-300"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center bg-blue-50 rounded-lg mb-4"
+              >
+                <i class="ri-python-line ri-lg text-primary"></i>
+              </div>
+              <h4 class="text-lg font-medium mb-3 text-gray-800">Python</h4>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 90%"></div>
+              </div>
+              <div class="mt-2 text-sm text-gray-500">Advanced</div>
+            </div>
+
+            <div
+              class="skill-card bg-white p-6 rounded-xl shadow-sm transition-all duration-300"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center bg-blue-50 rounded-lg mb-4"
+              >
+                <i class="ri-code-s-slash-line ri-lg text-primary"></i>
+              </div>
+              <h4 class="text-lg font-medium mb-3 text-gray-800">C</h4>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 85%"></div>
+              </div>
+              <div class="mt-2 text-sm text-gray-500">Advanced</div>
+            </div>
+
+            <div
+              class="skill-card bg-white p-6 rounded-xl shadow-sm transition-all duration-300"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center bg-blue-50 rounded-lg mb-4"
+              >
+                <i class="ri-html5-line ri-lg text-primary"></i>
+              </div>
+              <h4 class="text-lg font-medium mb-3 text-gray-800">HTML/CSS</h4>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 80%"></div>
+              </div>
+              <div class="mt-2 text-sm text-gray-500">Proficient</div>
+            </div>
+
+            <div
+              class="skill-card bg-white p-6 rounded-xl shadow-sm transition-all duration-300"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center bg-blue-50 rounded-lg mb-4"
+              >
+                <i class="ri-javascript-line ri-lg text-primary"></i>
+              </div>
+              <h4 class="text-lg font-medium mb-3 text-gray-800">JavaScript</h4>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 75%"></div>
+              </div>
+              <div class="mt-2 text-sm text-gray-500">Proficient</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-12">
+          <h3 class="text-xl font-semibold mb-8 text-gray-700">
+            Databases & Tools
+          </h3>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div
+              class="skill-card bg-white p-6 rounded-xl shadow-sm transition-all duration-300"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center bg-blue-50 rounded-lg mb-4"
+              >
+                <i class="ri-database-2-line ri-lg text-primary"></i>
+              </div>
+              <h4 class="text-lg font-medium mb-3 text-gray-800">SQL Server</h4>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 80%"></div>
+              </div>
+              <div class="mt-2 text-sm text-gray-500">Proficient</div>
+            </div>
+
+            <div
+              class="skill-card bg-white p-6 rounded-xl shadow-sm transition-all duration-300"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center bg-blue-50 rounded-lg mb-4"
+              >
+                <i class="ri-database-line ri-lg text-primary"></i>
+              </div>
+              <h4 class="text-lg font-medium mb-3 text-gray-800">MongoDB</h4>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 75%"></div>
+              </div>
+              <div class="mt-2 text-sm text-gray-500">Proficient</div>
+            </div>
+
+            <div
+              class="skill-card bg-white p-6 rounded-xl shadow-sm transition-all duration-300"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center bg-blue-50 rounded-lg mb-4"
+              >
+                <i class="ri-terminal-box-line ri-lg text-primary"></i>
+              </div>
+              <h4 class="text-lg font-medium mb-3 text-gray-800">Linux</h4>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 85%"></div>
+              </div>
+              <div class="mt-2 text-sm text-gray-500">Advanced</div>
+            </div>
+
+            <div
+              class="skill-card bg-white p-6 rounded-xl shadow-sm transition-all duration-300"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center bg-blue-50 rounded-lg mb-4"
+              >
+                <i class="ri-git-branch-line ri-lg text-primary"></i>
+              </div>
+              <h4 class="text-lg font-medium mb-3 text-gray-800">Git</h4>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 80%"></div>
+              </div>
+              <div class="mt-2 text-sm text-gray-500">Proficient</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-semibold mb-8 text-gray-700">
+            Specialized Skills
+          </h3>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div
+              class="skill-card bg-white p-6 rounded-xl shadow-sm transition-all duration-300"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center bg-blue-50 rounded-lg mb-4"
+              >
+                <i class="ri-shield-keyhole-line ri-lg text-primary"></i>
+              </div>
+              <h4 class="text-lg font-medium mb-3 text-gray-800">
+                Network Security
+              </h4>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 85%"></div>
+              </div>
+              <div class="mt-2 text-sm text-gray-500">Advanced</div>
+            </div>
+
+            <div
+              class="skill-card bg-white p-6 rounded-xl shadow-sm transition-all duration-300"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center bg-blue-50 rounded-lg mb-4"
+              >
+                <i class="ri-device-line ri-lg text-primary"></i>
+              </div>
+              <h4 class="text-lg font-medium mb-3 text-gray-800">
+                IoT Development
+              </h4>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 90%"></div>
+              </div>
+              <div class="mt-2 text-sm text-gray-500">Advanced</div>
+            </div>
+
+            <div
+              class="skill-card bg-white p-6 rounded-xl shadow-sm transition-all duration-300"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center bg-blue-50 rounded-lg mb-4"
+              >
+                <i class="ri-radar-line ri-lg text-primary"></i>
+              </div>
+              <h4 class="text-lg font-medium mb-3 text-gray-800">
+                Intrusion Detection
+              </h4>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 80%"></div>
+              </div>
+              <div class="mt-2 text-sm text-gray-500">Proficient</div>
+            </div>
+
+            <div
+              class="skill-card bg-white p-6 rounded-xl shadow-sm transition-all duration-300"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center bg-blue-50 rounded-lg mb-4"
+              >
+                <i class="ri-brain-line ri-lg text-primary"></i>
+              </div>
+              <h4 class="text-lg font-medium mb-3 text-gray-800">
+                Deep Learning
+              </h4>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 70%"></div>
+              </div>
+              <div class="mt-2 text-sm text-gray-500">Intermediate</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-white">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-6 text-gray-800">
+          Featured Projects
+        </h2>
+        <p class="text-center text-gray-600 mb-16 max-w-3xl mx-auto">
+          Explore my portfolio of projects focusing on cyber security, IoT
+          development, and intrusion detection systems.
+        </p>
+
+        <div class="flex mb-8 justify-center">
+          <div class="inline-flex p-1 bg-gray-100 rounded-full">
+            <button
+              class="px-4 py-2 rounded-full bg-primary text-white font-medium whitespace-nowrap"
+            >
+              All Projects
+            </button>
+            <button
+              class="px-4 py-2 rounded-full text-gray-700 font-medium whitespace-nowrap"
+            >
+              IoT
+            </button>
+            <button
+              class="px-4 py-2 rounded-full text-gray-700 font-medium whitespace-nowrap"
+            >
+              Security
+            </button>
+            <button
+              class="px-4 py-2 rounded-full text-gray-700 font-medium whitespace-nowrap"
+            >
+              Web
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div
+            class="project-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300"
+          >
+            <div class="relative h-48 overflow-hidden">
+              <img
+                src="https://public.readdy.ai/ai/img_res/dcc4f7ddfbb420f4d207d727e4ae3877.jpg"
+                alt="IoT-Based Home Security System"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2 text-gray-800">
+                IoT-Based Home Security System
+              </h3>
+
+              <p class="text-gray-600 mb-4">
+                A comprehensive security system using IoT devices for motion
+                detection, door/window sensors, and real-time alerts.
+              </p>
+
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span
+                  class="px-3 py-1 bg-blue-50 text-primary text-sm rounded-full"
+                  >Python</span
+                >
+                <span
+                  class="px-3 py-1 bg-blue-50 text-primary text-sm rounded-full"
+                  >Raspberry Pi</span
+                >
+                <span
+                  class="px-3 py-1 bg-blue-50 text-primary text-sm rounded-full"
+                  >MQTT</span
+                >
+              </div>
+
+              <div class="flex justify-between items-center">
+                <button
+                  class="text-primary font-medium flex items-center gap-1 hover:underline"
+                >
+                  View Details
+                  <i class="ri-arrow-right-line"></i>
+                </button>
+
+                <a
+                  href="#"
+                  class="w-10 h-10 flex items-center justify-center text-gray-500 hover:text-primary transition-colors"
+                >
+                  <i class="ri-github-line ri-lg"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="project-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300"
+          >
+            <div class="relative h-48 overflow-hidden">
+              <img
+                src="https://public.readdy.ai/ai/img_res/c4061c5f771cdb626cddeeea924b42f0.jpg"
+                alt="Intrusion Detection System"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2 text-gray-800">
+                Intrusion Detection System
+              </h3>
+
+              <p class="text-gray-600 mb-4">
+                A machine learning-based network intrusion detection system
+                capable of identifying and alerting on suspicious activities.
+              </p>
+
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span
+                  class="px-3 py-1 bg-blue-50 text-primary text-sm rounded-full"
+                  >Python</span
+                >
+                <span
+                  class="px-3 py-1 bg-blue-50 text-primary text-sm rounded-full"
+                  >TensorFlow</span
+                >
+                <span
+                  class="px-3 py-1 bg-blue-50 text-primary text-sm rounded-full"
+                  >Network Security</span
+                >
+              </div>
+
+              <div class="flex justify-between items-center">
+                <button
+                  class="text-primary font-medium flex items-center gap-1 hover:underline"
+                >
+                  View Details
+                  <i class="ri-arrow-right-line"></i>
+                </button>
+
+                <a
+                  href="#"
+                  class="w-10 h-10 flex items-center justify-center text-gray-500 hover:text-primary transition-colors"
+                >
+                  <i class="ri-github-line ri-lg"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="project-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300"
+          >
+            <div class="relative h-48 overflow-hidden">
+              <img
+                src="https://public.readdy.ai/ai/img_res/ad4226afabacf970955c675c8dd56070.jpg"
+                alt="Secure Chat Application"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2 text-gray-800">
+                Secure Chat Application
+              </h3>
+
+              <p class="text-gray-600 mb-4">
+                End-to-end encrypted messaging application with secure
+                authentication and ephemeral messaging capabilities.
+              </p>
+
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span
+                  class="px-3 py-1 bg-blue-50 text-primary text-sm rounded-full"
+                  >JavaScript</span
+                >
+                <span
+                  class="px-3 py-1 bg-blue-50 text-primary text-sm rounded-full"
+                  >Node.js</span
+                >
+                <span
+                  class="px-3 py-1 bg-blue-50 text-primary text-sm rounded-full"
+                  >Cryptography</span
+                >
+              </div>
+
+              <div class="flex justify-between items-center">
+                <button
+                  class="text-primary font-medium flex items-center gap-1 hover:underline"
+                >
+                  View Details
+                  <i class="ri-arrow-right-line"></i>
+                </button>
+
+                <a
+                  href="#"
+                  class="w-10 h-10 flex items-center justify-center text-gray-500 hover:text-primary transition-colors"
+                >
+                  <i class="ri-github-line ri-lg"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12 text-center">
+          <button
+            class="px-8 py-3 border-2 border-primary text-primary font-medium !rounded-button transition-all hover:bg-primary/5 whitespace-nowrap"
+          >
+            View All Projects
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-gray-50">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-16 text-gray-800">
+          Professional Experience
+        </h2>
+
+        <div class="max-w-3xl mx-auto">
+          <div class="relative pl-12 pb-12 timeline-item">
+            <div class="glassmorphism p-6 rounded-xl">
+              <div
+                class="flex flex-col md:flex-row md:items-center justify-between mb-4"
+              >
+                <h3 class="text-xl font-semibold text-gray-800">
+                  IoT & Deep Learning Intern
+                </h3>
+                <span
+                  class="text-sm font-medium text-primary bg-blue-50 px-3 py-1 rounded-full"
+                  >May 2024 - Present</span
+                >
+              </div>
+
+              <h4 class="text-lg font-medium mb-4 text-gray-700">
+                TechSecure Solutions, Bangalore
+              </h4>
+
+              <p class="text-gray-600 mb-4">
+                Working on developing intelligent IoT security solutions using
+                deep learning algorithms to detect anomalies and potential
+                security threats in IoT networks.
+              </p>
+
+              <ul class="space-y-2">
+                <li class="flex items-start gap-2">
+                  <i class="ri-check-line text-primary mt-1"></i>
+                  <span class="text-gray-600"
+                    >Implemented a real-time anomaly detection system for IoT
+                    devices using TensorFlow</span
+                  >
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="ri-check-line text-primary mt-1"></i>
+                  <span class="text-gray-600"
+                    >Developed secure communication protocols for IoT device
+                    networks</span
+                  >
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="ri-check-line text-primary mt-1"></i>
+                  <span class="text-gray-600"
+                    >Created a dashboard for monitoring and analyzing security
+                    events in IoT environments</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="relative pl-12 pb-12 timeline-item">
+            <div class="glassmorphism p-6 rounded-xl">
+              <div
+                class="flex flex-col md:flex-row md:items-center justify-between mb-4"
+              >
+                <h3 class="text-xl font-semibold text-gray-800">
+                  Cyber Security Research Assistant
+                </h3>
+                <span
+                  class="text-sm font-medium text-primary bg-blue-50 px-3 py-1 rounded-full"
+                  >Jan 2024 - Apr 2024</span
+                >
+              </div>
+
+              <h4 class="text-lg font-medium mb-4 text-gray-700">
+                University Research Lab
+              </h4>
+
+              <p class="text-gray-600 mb-4">
+                Assisted in research on advanced intrusion detection techniques
+                and vulnerability assessment methodologies.
+              </p>
+
+              <ul class="space-y-2">
+                <li class="flex items-start gap-2">
+                  <i class="ri-check-line text-primary mt-1"></i>
+                  <span class="text-gray-600"
+                    >Conducted vulnerability assessments on various network
+                    configurations</span
+                  >
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="ri-check-line text-primary mt-1"></i>
+                  <span class="text-gray-600"
+                    >Contributed to a research paper on ML-based intrusion
+                    detection systems</span
+                  >
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="ri-check-line text-primary mt-1"></i>
+                  <span class="text-gray-600"
+                    >Developed and tested security tools for educational
+                    purposes</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="relative pl-12 timeline-item">
+            <div class="glassmorphism p-6 rounded-xl">
+              <div
+                class="flex flex-col md:flex-row md:items-center justify-between mb-4"
+              >
+                <h3 class="text-xl font-semibold text-gray-800">
+                  Web Development Intern
+                </h3>
+                <span
+                  class="text-sm font-medium text-primary bg-blue-50 px-3 py-1 rounded-full"
+                  >Jun 2023 - Aug 2023</span
+                >
+              </div>
+
+              <h4 class="text-lg font-medium mb-4 text-gray-700">
+                InnoTech Solutions
+              </h4>
+
+              <p class="text-gray-600 mb-4">
+                Worked on developing secure web applications with a focus on
+                implementing best security practices.
+              </p>
+
+              <ul class="space-y-2">
+                <li class="flex items-start gap-2">
+                  <i class="ri-check-line text-primary mt-1"></i>
+                  <span class="text-gray-600"
+                    >Implemented secure authentication and authorization
+                    mechanisms</span
+                  >
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="ri-check-line text-primary mt-1"></i>
+                  <span class="text-gray-600"
+                    >Conducted security audits of existing web
+                    applications</span
+                  >
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="ri-check-line text-primary mt-1"></i>
+                  <span class="text-gray-600"
+                    >Developed a secure file upload system with comprehensive
+                    validation</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="py-20 bg-white">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-16 text-gray-800">
+          Certifications
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div
+            class="glassmorphism p-6 rounded-xl transition-all duration-300 hover:shadow-lg"
+          >
+            <div
+              class="w-14 h-14 flex items-center justify-center bg-blue-50 rounded-xl mb-6"
+            >
+              <i class="ri-shield-check-line ri-2x text-primary"></i>
+            </div>
+
+            <h3 class="text-xl font-semibold mb-2 text-gray-800">
+              IBM Cybersecurity Analyst
+            </h3>
+
+            <p class="text-gray-600 mb-4">
+              Professional certification covering network security, threat
+              intelligence, incident response, and forensics.
+            </p>
+
+            <div class="flex justify-between items-center text-sm">
+              <span class="text-gray-500">Issued: Jan 2024</span>
+              <a href="#" class="text-primary font-medium hover:underline"
+                >Verify</a
+              >
+            </div>
+          </div>
+
+          <div
+            class="glassmorphism p-6 rounded-xl transition-all duration-300 hover:shadow-lg"
+          >
+            <div
+              class="w-14 h-14 flex items-center justify-center bg-blue-50 rounded-xl mb-6"
+            >
+              <i class="ri-code-box-line ri-2x text-primary"></i>
+            </div>
+
+            <h3 class="text-xl font-semibold mb-2 text-gray-800">
+              Infosys Certified Python Developer
+            </h3>
+
+            <p class="text-gray-600 mb-4">
+              Comprehensive certification covering Python programming, data
+              structures, algorithms, and application development.
+            </p>
+
+            <div class="flex justify-between items-center text-sm">
+              <span class="text-gray-500">Issued: Nov 2023</span>
+              <a href="#" class="text-primary font-medium hover:underline"
+                >Verify</a
+              >
+            </div>
+          </div>
+
+          <div
+            class="glassmorphism p-6 rounded-xl transition-all duration-300 hover:shadow-lg"
+          >
+            <div
+              class="w-14 h-14 flex items-center justify-center bg-blue-50 rounded-xl mb-6"
+            >
+              <i class="ri-database-2-line ri-2x text-primary"></i>
+            </div>
+
+            <h3 class="text-xl font-semibold mb-2 text-gray-800">
+              MongoDB Database Administrator
+            </h3>
+
+            <p class="text-gray-600 mb-4">
+              Certification covering MongoDB database design, implementation,
+              security, and administration.
+            </p>
+
+            <div class="flex justify-between items-center text-sm">
+              <span class="text-gray-500">Issued: Aug 2023</span>
+              <a href="#" class="text-primary font-medium hover:underline"
+                >Verify</a
+              >
+            </div>
+          </div>
+
+          <div
+            class="glassmorphism p-6 rounded-xl transition-all duration-300 hover:shadow-lg"
+          >
+            <div
+              class="w-14 h-14 flex items-center justify-center bg-blue-50 rounded-xl mb-6"
+            >
+              <i class="ri-cloud-line ri-2x text-primary"></i>
+            </div>
+
+            <h3 class="text-xl font-semibold mb-2 text-gray-800">
+              AWS Cloud Practitioner
+            </h3>
+
+            <p class="text-gray-600 mb-4">
+              Foundational certification covering AWS cloud concepts, services,
+              security, architecture, and pricing.
+            </p>
+
+            <div class="flex justify-between items-center text-sm">
+              <span class="text-gray-500">Issued: May 2023</span>
+              <a href="#" class="text-primary font-medium hover:underline"
+                >Verify</a
+              >
+            </div>
+          </div>
+
+          <div
+            class="glassmorphism p-6 rounded-xl transition-all duration-300 hover:shadow-lg"
+          >
+            <div
+              class="w-14 h-14 flex items-center justify-center bg-blue-50 rounded-xl mb-6"
+            >
+              <i class="ri-device-line ri-2x text-primary"></i>
+            </div>
+
+            <h3 class="text-xl font-semibold mb-2 text-gray-800">
+              IoT Security Specialist
+            </h3>
+
+            <p class="text-gray-600 mb-4">
+              Specialized certification covering IoT security architecture,
+              threat modeling, and secure IoT development.
+            </p>
+
+            <div class="flex justify-between items-center text-sm">
+              <span class="text-gray-500">Issued: Feb 2023</span>
+              <a href="#" class="text-primary font-medium hover:underline"
+                >Verify</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-6 text-gray-800">
+          Get in Touch
+        </h2>
+        <p class="text-center text-gray-600 mb-16 max-w-2xl mx-auto">
+          Have a project in mind or interested in collaborating? Feel free to
+          reach out using the form below or through my social media channels.
+        </p>
+
+        <div class="flex flex-col lg:flex-row gap-12">
+          <div class="lg:w-1/2">
+            <form class="glassmorphism p-8 rounded-xl">
+              <div class="mb-6">
+                <label for="name" class="block text-gray-700 font-medium mb-2"
+                  >Name</label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  class="w-full px-4 py-3 bg-white border border-gray-200 rounded focus:border-primary"
+                  placeholder="Your name"
+                />
+              </div>
+
+              <div class="mb-6">
+                <label for="email" class="block text-gray-700 font-medium mb-2"
+                  >Email</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  class="w-full px-4 py-3 bg-white border border-gray-200 rounded focus:border-primary"
+                  placeholder="your.email@example.com"
+                />
+              </div>
+
+              <div class="mb-6">
+                <label
+                  for="subject"
+                  class="block text-gray-700 font-medium mb-2"
+                  >Subject</label
+                >
+                <input
+                  type="text"
+                  id="subject"
+                  class="w-full px-4 py-3 bg-white border border-gray-200 rounded focus:border-primary"
+                  placeholder="What is this regarding?"
+                />
+              </div>
+
+              <div class="mb-6">
+                <label
+                  for="message"
+                  class="block text-gray-700 font-medium mb-2"
+                  >Message</label
+                >
+                <textarea
+                  id="message"
+                  rows="5"
+                  class="w-full px-4 py-3 bg-white border border-gray-200 rounded focus:border-primary"
+                  placeholder="Your message here..."
+                ></textarea>
+              </div>
+
+              <div class="flex items-center mb-6">
+                <input type="checkbox" id="consent" class="custom-checkbox" />
+                <label for="consent" class="ml-2 text-gray-600 text-sm"
+                  >I agree to the processing of my personal data.</label
+                >
+              </div>
+
+              <button
+                type="submit"
+                class="w-full px-6 py-3 bg-primary text-white font-medium !rounded-button transition-all hover:bg-primary/90 glow-button whitespace-nowrap"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
+
+          <div class="lg:w-1/2">
+            <div class="glassmorphism p-8 rounded-xl h-full">
+              <h3 class="text-2xl font-semibold mb-6 text-gray-800">
+                Contact Information
+              </h3>
+
+              <div class="space-y-6">
+                <div class="flex items-start gap-4">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center bg-blue-50 rounded-lg mt-1"
+                  >
+                    <i class="ri-mail-line text-primary"></i>
+                  </div>
+                  <div>
+                    <h4 class="text-lg font-medium text-gray-800">Email</h4>
+                    <a
+                      href="mailto:farhan.boudiwale@example.com"
+                      class="text-primary hover:underline"
+                      >farhanfb951@gmail.com</a
+                    >
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-4">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center bg-blue-50 rounded-lg mt-1"
+                  >
+                    <i class="ri-phone-line text-primary"></i>
+                  </div>
+                  <div>
+                    <h4 class="text-lg font-medium text-gray-800">Phone</h4>
+                    <p class="text-gray-600">+91 8495032060</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-4">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center bg-blue-50 rounded-lg mt-1"
+                  >
+                    <i class="ri-map-pin-line text-primary"></i>
+                  </div>
+                  <div>
+                    <h4 class="text-lg font-medium text-gray-800">Location</h4>
+                    <p class="text-gray-600">Bangalore, Karnataka, India</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-10">
+                <h4 class="text-lg font-medium mb-4 text-gray-800">
+                  Connect with me
+                </h4>
+
+                <div class="flex gap-4">
+                  <a
+                    href="#"
+                    class="w-10 h-10 flex items-center justify-center bg-gray-100 hover:bg-primary hover:text-white text-gray-600 rounded-full transition-colors"
+                  >
+                    <i class="ri-linkedin-fill"></i>
+                  </a>
+                  <a
+                    href="#"
+                    class="w-10 h-10 flex items-center justify-center bg-gray-100 hover:bg-primary hover:text-white text-gray-600 rounded-full transition-colors"
+                  >
+                    <i class="ri-github-fill"></i>
+                  </a>
+                  <a
+                    href="#"
+                    class="w-10 h-10 flex items-center justify-center bg-gray-100 hover:bg-primary hover:text-white text-gray-600 rounded-full transition-colors"
+                  >
+                    <i class="ri-twitter-fill"></i>
+                  </a>
+                  <a
+                    href="#"
+                    class="w-10 h-10 flex items-center justify-center bg-gray-100 hover:bg-primary hover:text-white text-gray-600 rounded-full transition-colors"
+                  >
+                    <i class="ri-instagram-fill"></i>
+                  </a>
+                </div>
+              </div>
+
+              <div class="mt-10">
+                <h4 class="text-lg font-medium mb-4 text-gray-800">
+                  Available for
+                </h4>
+
+                <div class="flex flex-wrap gap-3">
+                  <span
+                    class="px-4 py-2 bg-blue-50 text-primary rounded-full text-sm"
+                    >Freelance Projects</span
+                  >
+                  <span
+                    class="px-4 py-2 bg-blue-50 text-primary rounded-full text-sm"
+                    >Full-time Positions</span
+                  >
+                  <span
+                    class="px-4 py-2 bg-blue-50 text-primary rounded-full text-sm"
+                    >Internships</span
+                  >
+                  <span
+                    class="px-4 py-2 bg-blue-50 text-primary rounded-full text-sm"
+                    >Collaborations</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white py-12">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-6 md:mb-0">
+            <a href="#" class="text-2xl font-['Pacifico'] text-primary"
+              >Farhan</a
+            >
+            <p class="text-gray-600 mt-2">BTech Cyber Security Student</p>
+          </div>
+
+          <div class="flex flex-col items-center md:items-end">
+            <p class="text-gray-600 mb-2">
+              © 2025 Farhan Boudiwale. All rights reserved.
+            </p>
+            <p class="text-gray-500 text-sm">Last updated: April 10, 2025</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button
+      id="scroll-to-top"
+      class="fixed bottom-6 right-6 w-12 h-12 bg-primary text-white rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300"
+    >
+      <i class="ri-arrow-up-line ri-lg"></i>
+    </button>
+
+    <script>
+      // Mobile Menu Toggle
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      mobileMenuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      // Smooth Scroll
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute("href");
+          const targetElement = document.querySelector(targetId);
+
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: "smooth",
+            });
+
+            // Close mobile menu if open
+            if (!mobileMenu.classList.contains("hidden")) {
+              mobileMenu.classList.add("hidden");
+            }
+          }
+        });
+      });
+
+      // Typing Animation
+      const typingText = document.getElementById("typing-text");
+      const phrases = [
+        "BTech Cyber Security Student",
+        "IoT Security Specialist",
+        "Python Developer",
+        "Network Security Enthusiast",
+      ];
+      let phraseIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      let typingSpeed = 100;
+
+      function typeText() {
+        const currentPhrase = phrases[phraseIndex];
+
+        if (isDeleting) {
+          typingText.textContent = currentPhrase.substring(0, charIndex - 1);
+          charIndex--;
+          typingSpeed = 50;
+        } else {
+          typingText.textContent = currentPhrase.substring(0, charIndex + 1);
+          charIndex++;
+          typingSpeed = 100;
+        }
+
+        if (!isDeleting && charIndex === currentPhrase.length) {
+          isDeleting = true;
+          typingSpeed = 1000; // Pause at the end
+        } else if (isDeleting && charIndex === 0) {
+          isDeleting = false;
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+          typingSpeed = 500; // Pause before typing next phrase
+        }
+
+        setTimeout(typeText, typingSpeed);
+      }
+
+      // Start typing animation
+      setTimeout(typeText, 1000);
+
+      // Scroll to Top Button
+      const scrollToTopButton = document.getElementById("scroll-to-top");
+
+      window.addEventListener("scroll", () => {
+        if (window.pageYOffset > 300) {
+          scrollToTopButton.classList.remove("opacity-0", "invisible");
+          scrollToTopButton.classList.add("opacity-100", "visible");
+        } else {
+          scrollToTopButton.classList.remove("opacity-100", "visible");
+          scrollToTopButton.classList.add("opacity-0", "invisible");
+        }
+      });
+
+      scrollToTopButton.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+
+      // Theme Toggle
+      const themeToggle = document.getElementById("theme-toggle");
+      const body = document.body;
+
+      themeToggle.addEventListener("change", () => {
+        if (themeToggle.checked) {
+          body.classList.add("dark-mode");
+        } else {
+          body.classList.remove("dark-mode");
+        }
+      });
+
+      // Animated Counters
+      function animateCounter(element, target, duration = 2000) {
+        let start = 0;
+        const increment = target > 0 ? target / 100 : 0;
+        const stepTime = Math.abs(Math.floor(duration / 100));
+        const startTime = new Date().getTime();
+        const endTime = startTime + duration;
+
+        function updateCounter() {
+          const now = new Date().getTime();
+          const remaining = Math.max((endTime - now) / duration, 0);
+          const value = Math.round(target - remaining * target);
+          element.textContent = value.toFixed(1);
+
+          if (value < target) {
+            setTimeout(updateCounter, stepTime);
+          } else {
+            element.textContent = target.toFixed(1);
+          }
+        }
+
+        setTimeout(updateCounter, stepTime);
+      }
+
+      // Initialize counters when they come into view
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              if (entry.target.id === "cgpa-counter") {
+                animateCounter(entry.target, 8.7);
+              } else if (entry.target.id === "projects-counter") {
+                animateCounter(entry.target, 7);
+              } else if (entry.target.id === "certs-counter") {
+                animateCounter(entry.target, 5);
+              }
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.5 },
+      );
+
+      observer.observe(document.getElementById("cgpa-counter"));
+      observer.observe(document.getElementById("projects-counter"));
+      observer.observe(document.getElementById("certs-counter"));
+    </script>
+  </body>
+</html>
